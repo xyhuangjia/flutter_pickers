@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const MyAppBar(
-      {this.title = '',
-      this.centerTitle = true,
-      this.rightDMActions,
-      this.backgroundColor,
-      this.mainColor,
-      this.titleW,
-      this.bottom,
-      this.leadingImg = '',
-      this.leadingW,
-      this.brightness = Brightness.light,
-      this.automaticallyImplyLeading = true,
-      this.elevation = 4.0});
+  const MyAppBar({
+    this.title = '',
+    this.centerTitle = true,
+    this.rightDMActions,
+    this.backgroundColor,
+    this.mainColor,
+    this.titleW,
+    this.bottom,
+    this.leadingImg = '',
+    this.leadingW,
+    this.brightness = Brightness.light,
+    this.automaticallyImplyLeading = true,
+    this.elevation = 4.0,
+  });
 
   final String title;
   final bool centerTitle; //标题是否居中，默认居中
@@ -28,8 +29,8 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Brightness brightness; //状态栏颜色 默认为白色文字
   final bool automaticallyImplyLeading; //配合leading 使用，如果左侧不需要图标 ，设置false
 
-//  @override
-//  Size get preferredSize => Size(100, 48);
+  //  @override
+  //  Size get preferredSize => Size(100, 48);
 
   /// appbar 的高度  默认高度是：56  kToolbarHeight
   @override
@@ -44,8 +45,8 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
 
     return canPop
         ? useCloseButton
-            ? CloseButton(color: mainColor)
-            : BackButton(color: mainColor)
+              ? CloseButton(color: mainColor)
+              : BackButton(color: mainColor)
         : Container();
   }
 
@@ -53,18 +54,21 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       title: titleW == null
-          ? Text(title,
+          ? Text(
+              title,
               style: TextStyle(
-                  color: mainColor,
-                  fontSize: 17.0,
-                  fontWeight: FontWeight.w500))
+                color: mainColor,
+                fontSize: 17.0,
+                fontWeight: FontWeight.w500,
+              ),
+            )
           : titleW,
       backgroundColor: backgroundColor != null
           ? backgroundColor
           : Theme.of(context).primaryColor,
       // : Provider.of<ThemeModel>(context, listen: true).themeData.primaryColor,
       elevation: elevation,
-      brightness: brightness,
+      // brightness: brightness,
       leading:
           leadingW ?? (automaticallyImplyLeading ? leading(context) : null),
       automaticallyImplyLeading: automaticallyImplyLeading,
